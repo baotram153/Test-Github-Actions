@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      PYTHONPATH: src:${{ env.PYTHONPATH }}
 
     steps:
     - uses: actions/checkout@v4
@@ -17,6 +15,11 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
+    
+    
+    - name: Export PYTHONPATH
+      run: |
+        echo "PYTHONPATH=src:$PYTHONPATH" >> $GITHUB_ENV
 
     - name: Install dependencies
       run: make install
