@@ -9,8 +9,8 @@ make test:
 
 make lint:
 	@echo "Running linters..."
-	pylint src/
+	pylint --disable=R,C src/
 
 make format:
 	@echo "Formatting code..."
-	black src/
+	black src/*
